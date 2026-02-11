@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bac Pro CIEL - Lycée Charles Tellier</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0a1929;
+            --secondary: #1e3a5f;
+            --accent: #00d9ff;
+            --light: #f0f4f8;
+            --white: #ffffff;
+            --shadow: rgba(0, 217, 255, 0.2);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 41, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 217, 255, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1.2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.3rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+        
+        nav a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+        }
+        
+        /* Sections */
+        section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent), #00a8cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin: 1.5rem 0 0.8rem;
+            font-weight: 600;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: var(--light);
+            font-weight: 300;
+        }
+        
+        /* Hero Section */
+        #accueil {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1) 0%, rgba(30, 58, 95, 0.2) 100%);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .highlight {
+            background: rgba(0, 217, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+            border-color: var(--accent);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+        
+        ul li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            font-weight: 300;
+        }
+        
+        ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(10, 25, 41, 0.8);
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+        
+        .cta {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 25px 20px;
+            }
+            
+            nav a {
+                font-size: 0.85rem;
+                padding: 0.4rem 1rem;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#informatique">Informatique</a></li>
+            <li><a href="#reseaux">Réseaux</a></li>
+            <li><a href="#electronique">Électronique</a></li>
+            <li><a href="#debouches">Débouchés</a></li>
+        </ul>
+    </nav>
+
+    <!-- Container -->
+    <div class="container">
+        
+        <!-- Accueil -->
+        <section id="accueil">
+            <h1>Bac Pro CIEL</h1>
+            <p class="subtitle">Cybersécurité, Informatique et Réseaux, Électronique</p>
+            <p class="subtitle">Lycée Charles Tellier</p>
+            
+            <div class="highlight">
+                <p style="font-size: 1.2rem; font-weight: 400; margin: 0;">
+                    🚀 Prépare-toi aux métiers du numérique et de la technologie !
+                </p>
+            </div>
+            
+            <p style="font-size: 1.1rem; max-width: 800px; margin: 30px auto;">
+                Le Bac Pro CIEL te forme aux technologies d'aujourd'hui et de demain : réseaux informatiques, 
+                systèmes électroniques et cybersécurité. Une formation complète pour devenir un professionnel 
+                polyvalent du secteur numérique.
+            </p>
+            
+            <div class="cards">
+                <div class="card">
+                    <h3>💻 Pratique</h3>
+                    <p>Travaux pratiques sur du matériel professionnel et des projets concrets</p>
+                </div>
+                <div class="card">
+                    <h3>🎓 Diplôme reconnu</h3>
+                    <p>Insertion professionnelle immédiate ou poursuite d'études</p>
+                </div>
+                <div class="card">
+                    <h3>🔐 Cybersécurité</h3>
+                    <p>Compétences essentielles dans un monde connecté</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Informatique -->
+        <section id="informatique">
+            <h2>Informatique</h2>
+            <p>
+                Maîtrise les fondamentaux du développement, de la programmation et de la gestion de systèmes informatiques.
+            </p>
+            
+            <h3>Ce que tu apprendras</h3>
+            <ul>
+                <li>Programmation (Python, C++, langages web)</li>
+                <li>Développement d'applications et d'interfaces</li>
+                <li>Installation et configuration de systèmes d'exploitation</li>
+                <li>Maintenance informatique et dépannage</li>
+                <li>Bases de données et gestion de l'information</li>
+            </ul>
+            
+            <h3>Outils et technologies</h3>
+            <div class="cards">
+                <div class="card">
+                    <h3>Développement</h3>
+                    <p>IDE professionnels, Git, frameworks modernes</p>
+                </div>
+                <div class="card">
+                    <h3>Systèmes</h3>
+                    <p>Windows Server, Linux, virtualisation</p>
+                </div>
+                <div class="card">
+                    <h3>Projets</h3>
+                    <p>Sites web, applications mobiles, scripts d'automatisation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Réseaux -->
+        <section id="reseaux">
+            <h2>Réseaux</h2>
+            <p>
+                Apprends à concevoir, installer et sécuriser des infrastructures réseau pour les entreprises.
+            </p>
+            
+            <h3>Compétences réseau</h3>
+            <ul>
+                <li>Architecture et protocoles réseau (TCP/IP, DNS, DHCP)</li>
+                <li>Configuration de routeurs et switchs</li>
+                <li>Installation et maintenance de réseaux filaires et Wi-Fi</li>
+                <li>Sécurisation des communications (VPN, pare-feu)</li>
+                <li>Diagnostic et résolution de pannes réseau</li>
+            </ul>
+            
+            <h3>Matériel professionnel</h3>
+            <div class="cards">
+                <div class="card">
+                    <h3>Équipements Cisco</h3>
+                    <p>Routeurs, switchs, certification Cisco possible</p>
+                </div>
+                <div class="card">
+                    <h3>Câblage</h3>
+                    <p>Fibre optique, RJ45, armoires de brassage</p>
+                </div>
+                <div class="card">
+                    <h3>Supervision</h3>
+                    <p>Outils de monitoring et d'analyse réseau</p>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <p><strong>Situations professionnelles :</strong> installation réseau pour PME, configuration de serveurs, 
+                mise en place de solutions de sécurité, dépannage à distance.</p>
+            </div>
+        </section>
+
+        <!-- Électronique -->
+        <section id="electronique">
+            <h2>Électronique</h2>
+            <p>
+                Découvre les circuits électroniques, les systèmes embarqués et l'automatisation.
+            </p>
+            
+            <h3>Fondamentaux</h3>
+            <ul>
+                <li>Lecture et réalisation de schémas électroniques</li>
+                <li>Mesure et analyse de signaux (oscilloscope, multimètre)</li>
+                <li>Étude des composants (résistances, transistors, circuits intégrés)</li>
+                <li>Soudure et assemblage de cartes électroniques</li>
+                <li>Programmation de microcontrôleurs (Arduino, Raspberry Pi)</li>
+            </ul>
+            
+            <h3>Projets pratiques</h3>
+            <div class="cards">
+                <div class="card">
+                    <h3>Systèmes embarqués</h3>
+                    <p>Domotique, objets connectés (IoT)</p>
+                </div>
+                <div class="card">
+                    <h3>Automatisation</h3>
+                    <p>Capteurs, actionneurs, robots</p>
+                </div>
+                <div class="card">
+                    <h3>Maintenance</h3>
+                    <p>Diagnostic et réparation d'équipements électroniques</p>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <p><strong>Lien avec l'informatique :</strong> l'électronique est au cœur des ordinateurs, 
+                des réseaux et des objets connectés. Tu comprendras le fonctionnement matériel des systèmes numériques.</p>
+            </div>
+        </section>
+
+        <!-- Débouchés -->
+        <section id="debouches">
+            <h2>Débouchés</h2>
+            
+            <h3>Métiers accessibles</h3>
+            <div class="cards">
+                <div class="card">
+                    <h3>Technicien réseau</h3>
+                    <p>Installation et maintenance d'infrastructures réseau</p>
+                </div>
+                <div class="card">
+                    <h3>Technicien informatique</h3>
+                    <p>Support utilisateur, maintenance systèmes et logiciels</p>
+                </div>
+                <div class="card">
+                    <h3>Technicien en cybersécurité</h3>
+                    <p>Protection des systèmes et des données</p>
+                </div>
+                <div class="card">
+                    <h3>Électronicien</h3>
+                    <p>Maintenance et dépannage d'équipements électroniques</p>
+                </div>
+                <div class="card">
+                    <h3>Développeur IoT</h3>
+                    <p>Objets connectés et systèmes embarqués</p>
+                </div>
+                <div class="card">
+                    <h3>Technicien télécoms</h3>
+                    <p>Installation et gestion de réseaux de communication</p>
+                </div>
+            </div>
+            
+            <h3>Poursuites d'études</h3>
+            <ul>
+                <li>BTS CIEL (option A Informatique et Réseaux, option B Électronique)</li>
+                <li>BTS Cybersécurité, Informatique et Réseaux, Électronique (CIRE)</li>
+                <li>BTS Systèmes Numériques</li>
+                <li>BTS Services Informatiques aux Organisations (SIO)</li>
+                <li>BUT Réseaux et Télécommunications</li>
+                <li>BUT Informatique</li>
+                <li>Licences professionnelles spécialisées</li>
+            </ul>
+            
+            <div class="highlight">
+                <p><strong>🔐 La cybersécurité, un enjeu majeur :</strong> Avec la digitalisation massive, 
+                les entreprises recherchent des professionnels capables de protéger leurs systèmes. 
+                Le Bac Pro CIEL t'apporte les bases indispensables pour évoluer dans ce secteur en forte croissance.</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#accueil" class="cta">Rejoins la formation !</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Bac Pro CIEL - Lycée Charles Tellier</p>
+        <p>Formation professionnelle aux métiers du numérique</p>
+    </footer>
+</body>
+</html>
